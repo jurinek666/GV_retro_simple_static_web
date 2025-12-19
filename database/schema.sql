@@ -81,6 +81,60 @@ CREATE POLICY "Public can read published playlists"
     USING (published = true);
 
 -- ============================================
+-- ADMIN POLICIES (pro autentizované uživatele)
+-- ============================================
+
+-- Politika: Autentizovaní uživatelé mohou číst všechny články (i nepublikované)
+CREATE POLICY "Authenticated users can read all articles"
+    ON articles FOR SELECT
+    TO authenticated
+    USING (true);
+
+-- Politika: Autentizovaní uživatelé mohou vkládat články
+CREATE POLICY "Authenticated users can insert articles"
+    ON articles FOR INSERT
+    TO authenticated
+    WITH CHECK (true);
+
+-- Politika: Autentizovaní uživatelé mohou upravovat články
+CREATE POLICY "Authenticated users can update articles"
+    ON articles FOR UPDATE
+    TO authenticated
+    USING (true)
+    WITH CHECK (true);
+
+-- Politika: Autentizovaní uživatelé mohou mazat články
+CREATE POLICY "Authenticated users can delete articles"
+    ON articles FOR DELETE
+    TO authenticated
+    USING (true);
+
+-- Politika: Autentizovaní uživatelé mohou číst všechny playlisty (i nepublikované)
+CREATE POLICY "Authenticated users can read all playlists"
+    ON playlists FOR SELECT
+    TO authenticated
+    USING (true);
+
+-- Politika: Autentizovaní uživatelé mohou vkládat playlisty
+CREATE POLICY "Authenticated users can insert playlists"
+    ON playlists FOR INSERT
+    TO authenticated
+    WITH CHECK (true);
+
+-- Politika: Autentizovaní uživatelé mohou upravovat playlisty
+CREATE POLICY "Authenticated users can update playlists"
+    ON playlists FOR UPDATE
+    TO authenticated
+    USING (true)
+    WITH CHECK (true);
+
+-- Politika: Autentizovaní uživatelé mohou mazat playlisty
+CREATE POLICY "Authenticated users can delete playlists"
+    ON playlists FOR DELETE
+    TO authenticated
+    USING (true);
+
+-- ============================================
 -- VÝCHOZÍ DATA (OPTIONÁLNÍ)
 -- ============================================
 -- Můžete vložit testovací data nebo je přidat přes Supabase Dashboard

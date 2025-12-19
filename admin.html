@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Admin rozhraní - Good Vibe Gear & Gaming">
+    <title>Admin Panel - Good Vibe Gear & Gaming</title>
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <!-- LOGIN SCREEN -->
+    <div id="login-screen" class="login-screen">
+        <div class="login-container">
+            <h1 class="login-title">Admin Panel</h1>
+            <p class="login-subtitle">Good Vibe Gear & Gaming</p>
+            
+            <form id="login-form" class="login-form">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required autocomplete="email">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Heslo</label>
+                    <input type="password" id="password" name="password" required autocomplete="current-password">
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-block">Přihlásit se</button>
+                
+                <div id="login-error" class="error-message" style="display: none;"></div>
+            </form>
+            
+            <div class="login-footer">
+                <p>Nemáte účet? <a href="#" id="show-signup">Registrovat se</a></p>
+            </div>
+        </div>
+        
+        <!-- SIGNUP FORM (skrytý) -->
+        <div id="signup-container" class="login-container" style="display: none;">
+            <h1 class="login-title">Registrace</h1>
+            <p class="login-subtitle">Vytvořte admin účet</p>
+            
+            <form id="signup-form" class="login-form">
+                <div class="form-group">
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" name="email" required autocomplete="email">
+                </div>
+                
+                <div class="form-group">
+                    <label for="signup-password">Heslo (min. 6 znaků)</label>
+                    <input type="password" id="signup-password" name="password" required minlength="6" autocomplete="new-password">
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-block">Registrovat se</button>
+                
+                <div id="signup-error" class="error-message" style="display: none;"></div>
+                <div id="signup-success" class="success-message" style="display: none;"></div>
+            </form>
+            
+            <div class="login-footer">
+                <p>Již máte účet? <a href="#" id="show-login">Přihlásit se</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADMIN DASHBOARD -->
+    <div id="admin-dashboard" class="admin-dashboard" style="display: none;">
+        <!-- HEADER -->
+        <header class="admin-header">
+            <div class="admin-header-content">
+                <h1 class="admin-logo">Admin Panel</h1>
+                <div class="admin-header-actions">
+                    <span id="user-email" class="user-info"></span>
+                    <button id="logout-btn" class="btn btn-secondary">Odhlásit se</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- MAIN CONTENT -->
+        <main class="admin-main">
+            <!-- TABS -->
+            <div class="admin-tabs">
+                <button class="tab-btn active" data-tab="articles">Články</button>
+                <button class="tab-btn" data-tab="playlists">Playlisty</button>
+            </div>
+
+            <!-- ARTICLES TAB -->
+            <div id="articles-tab" class="tab-content active">
+                <div class="section-header">
+                    <h2>Správa článků</h2>
+                    <button id="add-article-btn" class="btn btn-primary">+ Přidat článek</button>
+                </div>
+
+                <!-- ARTICLES LIST -->
+                <div id="articles-list" class="items-list">
+                    <!-- Naplní se dynamicky -->
+                </div>
+
+                <!-- ARTICLE FORM (Modal) -->
+                <div id="article-modal" class="modal" style="display: none;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 id="article-modal-title">Přidat článek</h3>
+                            <button class="modal-close" id="close-article-modal">&times;</button>
+                        </div>
+                        <form id="article-form" class="modal-form">
+                            <input type="hidden" id="article-id">
+                            
+                            <div class="form-group">
+                                <label for="article-title">Název *</label>
+                                <input type="text" id="article-title" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="article-perex">Perex *</label>
+                                <textarea id="article-perex" rows="4" required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="article-image-url">URL obrázku</label>
+                                <input type="url" id="article-image-url" placeholder="https://...">
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="article-category">Kategorie *</label>
+                                    <input type="text" id="article-category" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="article-section">Sekce *</label>
+                                    <select id="article-section" required>
+                                        <option value="music">Hudba</option>
+                                        <option value="gaming">Gaming</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="article-date">Datum publikace *</label>
+                                    <input type="date" id="article-date" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="article-order">Pořadí</label>
+                                    <input type="number" id="article-order" value="0" min="0">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="article-published" checked>
+                                    <span>Publikováno</span>
+                                </label>
+                            </div>
+                            
+                            <div id="article-form-error" class="error-message" style="display: none;"></div>
+                            
+                            <div class="modal-actions">
+                                <button type="button" class="btn btn-secondary" id="cancel-article">Zrušit</button>
+                                <button type="submit" class="btn btn-primary">Uložit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PLAYLISTS TAB -->
+            <div id="playlists-tab" class="tab-content">
+                <div class="section-header">
+                    <h2>Správa playlistů</h2>
+                    <button id="add-playlist-btn" class="btn btn-primary">+ Přidat playlist</button>
+                </div>
+
+                <!-- PLAYLISTS LIST -->
+                <div id="playlists-list" class="items-list">
+                    <!-- Naplní se dynamicky -->
+                </div>
+
+                <!-- PLAYLIST FORM (Modal) -->
+                <div id="playlist-modal" class="modal" style="display: none;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 id="playlist-modal-title">Přidat playlist</h3>
+                            <button class="modal-close" id="close-playlist-modal">&times;</button>
+                        </div>
+                        <form id="playlist-form" class="modal-form">
+                            <input type="hidden" id="playlist-id">
+                            
+                            <div class="form-group">
+                                <label for="playlist-title">Název *</label>
+                                <input type="text" id="playlist-title" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="playlist-description">Popis</label>
+                                <textarea id="playlist-description" rows="3"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="playlist-spotify-id">Spotify Playlist ID *</label>
+                                <input type="text" id="playlist-spotify-id" required placeholder="37i9dQZF1DX0XUsuxWHRQd">
+                                <small class="form-hint">ID najdete v URL playlistu: spotify.com/playlist/<strong>ID</strong></small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="playlist-embed-url">Embed URL *</label>
+                                <input type="url" id="playlist-embed-url" required placeholder="https://open.spotify.com/embed/playlist/...">
+                                <small class="form-hint">Formát: https://open.spotify.com/embed/playlist/[SPOTIFY_ID]</small>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="playlist-order">Pořadí</label>
+                                    <input type="number" id="playlist-order" value="0" min="0">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="playlist-published" checked>
+                                        <span>Publikováno</span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div id="playlist-form-error" class="error-message" style="display: none;"></div>
+                            
+                            <div class="modal-actions">
+                                <button type="button" class="btn btn-secondary" id="cancel-playlist">Zrušit</button>
+                                <button type="submit" class="btn btn-primary">Uložit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- LOADING OVERLAY -->
+    <div id="loading-overlay" class="loading-overlay" style="display: none;">
+        <div class="loading-spinner"></div>
+        <p>Načítám...</p>
+    </div>
+
+    <!-- Supabase SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/config.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>
+
