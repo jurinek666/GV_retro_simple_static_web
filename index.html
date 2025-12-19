@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Good Vibe Gear & Gaming - hudba, gaming a playlisty">
+    <title>Good Vibe Gear & Gaming</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- HEADER - FIXNÍ / STICKY -->
+    <header class="header" id="header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="#home" class="logo-link">
+                    <span class="logo-text">Good Vibe Gear & Gaming</span>
+                </a>
+            </div>
+            <nav class="nav">
+                <a href="#home" class="nav-link cta-button">TOP / HOME</a>
+                <a href="#hudba" class="nav-link">Hudba</a>
+                <a href="#gaming" class="nav-link">Gaming</a>
+                <a href="#playlisty" class="nav-link">Playlisty</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        <!-- HOME / TOP SECTION -->
+        <section id="home" class="section section-hero">
+            <div class="container">
+                <h1 class="hero-title">Good Vibe Gear & Gaming</h1>
+                <p class="hero-subtitle">Hudba, gaming a playlisty v retro stylu</p>
+            </div>
+        </section>
+
+        <!-- SEKCE 1 - HUDBA (ČLÁNKY) -->
+        <section id="hudba" class="section section-music">
+            <div class="container">
+                <h2 class="section-title">Hudba</h2>
+                <p class="section-description">Odborné články o hudbě, historii stylů a klubové scéně</p>
+                <div class="articles-grid" id="music-articles">
+                    <!-- Články budou dynamicky naplněny z JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- SEKCE 2 - GAMING (ČLÁNKY) -->
+        <section id="gaming" class="section section-gaming">
+            <div class="container">
+                <h2 class="section-title">Gaming</h2>
+                <p class="section-description">Herní publicistika a recenze retro i aktuálních titulů</p>
+                <div class="articles-grid" id="gaming-articles">
+                    <!-- Články budou dynamicky naplněny z JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- SEKCE 3 - PLAYLISTY -->
+        <section id="playlisty" class="section section-playlists">
+            <div class="container">
+                <h2 class="section-title">Playlisty</h2>
+                <p class="section-description">Hudební playlisty na Spotify</p>
+                <div class="playlists-grid" id="playlists-container">
+                    <!-- Playlisty budou dynamicky naplněny z JS -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-text">
+                    &copy; <span id="current-year"></span> Good Vibe Gear & Gaming
+                </p>
+                <p class="footer-text">
+                    Vytvořeno: <span id="creation-year"></span> | 
+                    Poslední aktualizace: <span id="last-update"></span>
+                </p>
+                <p class="footer-text">
+                    Kontakt: <a href="mailto:info@goodvibegear.com" class="footer-link">info@goodvibegear.com</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
+
