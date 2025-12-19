@@ -385,3 +385,4 @@ async function init() {
 // Spustíme inicializaci
 init();
 
+

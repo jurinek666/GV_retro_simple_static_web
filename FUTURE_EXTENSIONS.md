@@ -78,3 +78,4 @@ async function fetchMusicArticles() {
 - [ ] Lazy loading obrázků
 - [ ] Service Worker pro offline podporu
 
+
