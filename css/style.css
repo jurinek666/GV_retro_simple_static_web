@@ -521,6 +521,33 @@ body {
 }
 
 /* ============================================
+   LOADING, ERROR & EMPTY STATES
+   ============================================ */
+
+.loading-state,
+.error-state,
+.empty-state {
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-3xl);
+}
+
+.loading-state {
+    color: var(--color-text-secondary);
+}
+
+.error-state {
+    color: var(--color-accent-primary);
+}
+
+.empty-state {
+    color: var(--color-text-secondary);
+}
+
+/* ============================================
    UTILITY CLASSES
    ============================================ */
 
@@ -535,4 +562,5 @@ body {
     white-space: nowrap;
     border-width: 0;
 }
+
 

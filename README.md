@@ -15,10 +15,17 @@ Statický one-page web s retro pixel-art stylem zaměřený na hudbu, gaming a p
 ```
 /
 ├── index.html          # Hlavní HTML struktura
+├── admin.html          # Admin panel pro správu obsahu
 ├── css/
-│   └── style.css      # Kompletní CSS s design tokens
+│   ├── style.css       # CSS pro hlavní web
+│   └── admin.css      # CSS pro admin panel
 ├── js/
-│   └── main.js        # Vanilla JS pro interaktivitu
+│   ├── main.js        # Vanilla JS pro hlavní web
+│   ├── admin.js       # JS pro admin panel
+│   └── config.js      # Supabase konfigurace
+├── database/
+│   ├── schema.sql     # Databázové schéma
+│   └── seed_data.sql  # Testovací data
 ├── assets/
 │   └── images/        # Obrázky (pixel-art)
 └── README.md
@@ -72,9 +79,23 @@ Statický one-page web s retro pixel-art stylem zaměřený na hudbu, gaming a p
 - Smooth scroll navigace
 - Připraveno na API integraci (SupaPages/Maxwell)
 
+## 🔐 Admin Panel
+
+Web obsahuje administrátorské rozhraní pro správu obsahu:
+
+- **Soubor:** `admin.html`
+- **Funkce:**
+  - Autentizace (registrace/přihlášení)
+  - Správa článků (přidat, upravit, smazat)
+  - Správa playlistů (přidat, upravit, smazat)
+  - Publikace/nepublikace záznamů
+
+**Dokumentace:** Viz `ADMIN_SETUP.md`
+
 ## 📝 Budoucí rozšíření
 
-- [ ] Napojení na SupaPages databázi
+- [x] Napojení na Supabase databázi
+- [x] Admin panel pro správu obsahu
 - [ ] Rozdělení na vícestránkový web
 - [ ] Filtrace článků
 - [ ] Video sekce pro gaming
